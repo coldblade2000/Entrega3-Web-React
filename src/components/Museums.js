@@ -1,22 +1,25 @@
 import {useEffect, useLayoutEffect, useState} from "react";
 import Museum from "./Museum";
 
-const Museums = ()=>{
+const Museums = ({onTabChange}) => {
     const url = "https://back-museums-uniandes.herokuapp.com/api/museums"
 
     const [museums, setMuseums] = useState([])
 
-    useEffect(()=>{
-        fetch(url).then(res=>res.json()).then(newMuseums =>{
-            setMuseums(newMuseums)
-        })
-    })
+    useEffect(() => {
+            if (museums.length < 1) {
+                fetch(url).then(res => res.json()).then(newMuseums => {
+                    setMuseums(newMuseums)
+                })
+            }
+        }
+    )
 
     return (
-        <div className="row justify-content-center">
+        <div className="row justify-content-center px-5">
             {museums.map(museum => (
-                <div className="col-md-3">
-                    <Museum data={museum}/>
+                <div key={museum.name} className="col-md-3">
+                    <Museum data={museum} onTabChange={onTabChange}/>
                 </div>
             ))}
         </div>

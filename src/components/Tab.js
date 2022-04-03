@@ -1,13 +1,16 @@
 import {useState} from "react";
 import "./Tab.css"
 import Museums from "./Museums";
+import MuseumDetail from "./MuseumDetail";
 
-const Tab = ({tab, tabName}) => {
+const Tab = ({tab, tabName, museumDetail, onTabChange}) => {
 
 
     const renderContent = () => {
         if (tab === "museums"){
-            return <Museums/>
+            return <Museums onTabChange={onTabChange}/>
+        }else if(tab === "museumdetail"){
+            return  <MuseumDetail museum={museumDetail} onTabChange={onTabChange}/>
         }
     }
     return (
@@ -18,7 +21,7 @@ const Tab = ({tab, tabName}) => {
 
             <div className="divider"/>
 
-            <div className="px-5">
+            <div className="w-100">
                 {renderContent()}
 
             </div>

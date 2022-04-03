@@ -1,8 +1,10 @@
+
 .museum-card {
     border: 1px solid black;
     background: #C4C4C4;
     padding: 30px 44px;
     height: 100%;
+    cursor: pointer;
 }
 
 .museum-name {
@@ -15,7 +17,7 @@
 }
 
 
-.museum-name {
+.museum-city {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;

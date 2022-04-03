@@ -6,9 +6,9 @@ import Tab from "./components/Tab";
 
 function App() {
 
-    const [tab, setTab] = useState({tabID: "museums", tabName: "MUSEUMS"})
-    const onTabChange = (tabID, tabName) => {
-        setTab({tabID, tabName})
+    const [tab, setTab] = useState({tabID: "museums", tabName: "MUSEUMS", museumDetail: null})
+    const onTabChange = (tabID, tabName, museumDetail = null) => {
+        setTab({tabID, tabName, museumDetail})
     }
     return (
         <div className="App">
@@ -22,9 +22,9 @@ function App() {
             </header>
             <div className="px-5">
                 <nav>
-                    <p className="breadcrumbs">Home > Museos</p>
+                    <p className="breadcrumbs">Home > <a href="#" onClick={()=> onTabChange("museums", "MUSEUMS")}>Museos</a></p>
                 </nav>
-                <Tab tab={tab.tabID} tabName={tab.tabName} onTabChange={onTabChange}/>
+                <Tab tab={tab.tabID} tabName={tab.tabName} museumDetail={tab.museumDetail} onTabChange={onTabChange}/>
             </div>
         </div>
     );
